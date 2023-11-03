@@ -1,1 +1,11 @@
-kool.services.yml
+version: '3.8'
+services:
+  pdf:
+    image: kooldev/puppeteer:latest
+    restart: unless-stopped
+    command: ['yarn', 'start']
+    working_dir: '/app'
+    volumes:
+      - '.:/app'
+    ports:
+      - '${PORT:-3000}:3000'
